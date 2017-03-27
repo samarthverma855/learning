@@ -1,0 +1,131 @@
+@import "bourbon/bourbon";
+$colors: (
+    'white': #fff,
+    'black': #000,
+    'grey': #787878,
+    'crimson': #e91640,
+    'blue': #0d7afe,
+    'trans-blue': #8daabf
+);
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+@import url(https://fonts.googleapis.com/css?family=Baloo|Lato|Montserrat|Open+Sans|PT+Sans|Roboto|Roboto+Condensed|Roboto+Mono|Material+Icons);
+@mixin background-color($color){
+    background: $color;
+}
+@mixin color($color){
+    color: $color;
+}
+@mixin font($name,$type,$size,$weight:null,$style:null,$variant:null){
+  font: $style $variant $weight $size quote($name),$type;
+}
+@mixin box-shadow($top, $left, $blur,$spread, $color, $inset:"") {
+    $shadow: quote( #{$inset} $top $left $blur $spread $color);
+    @include prefixer(box-shadow, unquote($shadow), webkit moz spec);
+}
+@mixin multiple-box-shadow($shadow...) {
+    @include prefixer(box-shadow,$shadow, webkit moz spec);
+}
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin line-height($height-value){
+    line-height: $height-value;
+}
+@mixin overflow($overflow-type){
+    overflow-y: $overflow-type;
+}
+@mixin z-index($index){
+    z-index: $index;
+}
+@mixin text-align($alignment){
+    text-align: $alignment;
+}
+@mixin float($direction){
+    float: $direction;
+}
+@mixin vertical-align($alignment){
+    vertical-align: $alignment;
+}
+@mixin cursor($cursor-type){
+    cursor: $cursor-type;
+}
+@mixin no-outline(){
+    outline: none;
+}
+@mixin no-border(){
+    border: none;
+}
+@mixin content($content-value){
+    content: $content-value;
+}
+@mixin text-shadow($top,$left,$blur,$color){
+    text-shadow: $top $left $blur $color;
+}
+@mixin border-radius($radius...){
+    @include prefixer(border-radius,$radius, webkit moz spec);
+}
+@mixin border($width,$border-type,$color){
+    border: $width $border-type $color;
+}
+@mixin border-bottom($width,$border-type,$color){
+    border-bottom: $width $border-type $color;
+}
+@mixin text-transform($case){
+    text-transform: $case;
+}
+@mixin opacity($value){
+    opacity: $value;
+}
+@mixin no-box-shadow(){
+    @include prefixer(box-shadow, none, webkit moz spec);
+}
+@mixin no-text-shadow(){
+    text-shadow: none;
+}
+@mixin visibility($value){
+    visibility: $value;
+}
+@mixin bleed($val){
+    @include margin(-$val);
+    @include padding($val);
+    
+}
+@mixin no-list-style(){
+    list-style: none;
+}
+*{
+   // @include transition(all 800ms linear);
+    &,&::after,&::before{
+        @include box-sizing(border-box);
+    }
+}
+html{
+  @include size(100%);
+  @include margin(0);
+  @include padding(0);
+}
+body{
+    @include color(map-get($colors,'black'));
+    @include background-color(map-get($colors,'white'));
+    @include font(Open Sans,sans-serif,em(18));
+    @include size(100%);
+    @include margin(0);
+    @include padding(0);
+}
+a{
+    @include no-outline;
+}
+figure{
+    @include margin(0);
+    
+}

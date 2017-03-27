@@ -1,0 +1,9 @@
+//************************************************************************//
+// Background property for adding multiple backgrounds using shorthand
+// notation.
+//************************************************************************//
+
+
+@mixin background-color($color){
+  background: $color;
+}
